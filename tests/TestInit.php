@@ -6,3 +6,4 @@ if (false === $status) {
 }
 
 require_once dirname(__DIR__) . '/library/PEAR2/Services/HuffPo.php';
+require_once dirname(__DIR__) . '/library/PEAR2/Services/HuffPo/Request.php';
