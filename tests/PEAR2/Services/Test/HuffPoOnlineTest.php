@@ -21,6 +21,11 @@ class HuffPoOnlineTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($url, $meta->entry_url);
     }
 
+    /**
+     * Query multiple (directly).
+     *
+     * @return void
+     */
     public function testMultiple()
     {
         $request = new Request(
