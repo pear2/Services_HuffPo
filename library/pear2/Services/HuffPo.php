@@ -1,5 +1,5 @@
 <?php
-namespace pear2\Services;
+namespace PEAR2\Services;
 
 class HuffPo
 {
