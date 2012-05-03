@@ -5,6 +5,11 @@ use pear2\Services\HuffPo;
 
 class HuffPoTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Return URL and ID for our test cases!
+     *
+     * @return array
+     */
     public static function articleIdProvider()
     {
         return array(
@@ -24,5 +29,19 @@ class HuffPoTest extends \PHPUnit_Framework_TestCase
         $huffPo = new HuffPo($url);
         $this->assertSame($url, $huffPo->getUrl());
         $this->assertSame($id, $huffPo->getArticleId());
+    }
+
+    /**
+     * @dataProvider articleIdProvider
+     */
+    public function testRequestUrl($url, $id)
+    {
+        $huffPo = new HuffPo($url);
+
+        $endpoint   = $huffPo->getEndpoint();
+        $requestUrl = $huffPo->getApiRequestUrl();
+
+        $this->assertStringStartsWith($endpoint, $requestUrl);
+        $this->assertStringEndsWith((string) $id, $requestUrl);
     }
 }
