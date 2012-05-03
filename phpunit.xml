@@ -1,0 +1,5 @@
+<phpunit bootstrap="./tests/TestInit.php" colors="true">
+    <testsuite>
+        <directory>./tests/pear2/Services/Test</directory>
+    </testsuite>
+</phpunit>
