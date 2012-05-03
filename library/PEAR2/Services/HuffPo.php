@@ -82,9 +82,6 @@ class HuffPo
      */
     public function getClient()
     {
-        if (null === $this->client) {
-            $this->client = new \HTTP_Request2;
-        }
         return $this->client;
     }
 
