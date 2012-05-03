@@ -12,8 +12,11 @@ class HuffPoOnlineTest extends \PHPUnit_Framework_TestCase
      */
     public function testOnline()
     {
-        $huffPo = new HuffPo('http://www.huffingtonpost.com/2012/04/20/vegan-is-love-book_n_1441699.html');
+        $url    = 'http://www.huffingtonpost.com/2012/04/20/vegan-is-love-book_n_1441699.html';
+        $huffPo = new HuffPo($url);
         $meta   = $huffPo->getMetaData();
-        var_dump($meta);
+
+        $this->assertEquals(1441699, $meta->entry_id);
+        $this->assertSame($url, $meta->entry_url);
     }
 }
