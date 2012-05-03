@@ -1,11 +1,11 @@
-# PEAR2\Service\HuffPo
+# PEAR2\Services\HuffPo
 
 Look up meta-data for an article on huffingtonpost.com.
 
 ## Setup
 
     pear channel-discover easybib.github.com/pear
-    pear install easybib/Services_HuffPo-alpha
+    pear install easybib/PEAR2_Services_HuffPo-alpha
 
 ## Usage
 
