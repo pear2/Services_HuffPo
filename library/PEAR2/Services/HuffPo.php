@@ -1,14 +1,15 @@
 <?php
 namespace PEAR2\Services;
 
+use PEAR2\Services\HuffPo\Request;
+
+/**
+ * @category Services
+ * @package  PEAR2\Services\HuffPo
+ * @author   Till Klampaeckel <till@php.net>
+ */
 class HuffPo
 {
-    /**
-     * The API's version this wrapper supports!
-     * @var string $apiVersion
-     */
-    protected $apiVersion = '1.0';
-
     /**
      * Article's numeric ID.
      * @var int
@@ -118,9 +119,16 @@ class HuffPo
             $this->setUrl($url);
             $this->articleId = null;
         }
-        $request  = $this->getApiRequestUrl();
-        $response = $this->makeRequest($request);
-        return $this->parseResponse($response);
+        $requestUrl = $this->getApiRequestUrl();
+
+        $request = new Request(
+            $requestUrl,
+            $this->getArticleId(),
+            $this->getClient()
+        );
+
+        $response = $request->makeRequest();
+        return $request->parseResponse($response);
     }
 
     public function getUrl()
@@ -132,46 +140,5 @@ class HuffPo
     {
         $this->url = $url;
         return $this;
-    }
-
-    /**
-     * Issue the request!
-     *
-     * @param string $url
-     *
-     * @return \HTTP_Request2_Response
-     */
-    protected function makeRequest($url)
-    {
-        $client   = $this->getClient();
-        $response = $client->setUrl($url)->setMethod(\HTTP_Request2::METHOD_GET)->send();
-        return $response;
-    }
-
-    /**
-     * Parse the response!
-     *
-     * @param \HTTP_Request2_Response $response
-     *
-     * @return \stdClass
-     *
-     * @throws \RuntimeException|\LogicException
-     * @todo   Fix all these assumptions about the response!
-     */
-    protected function parseResponse(\HTTP_Request2_Response $response)
-    {
-        $body = $response->getBody();
-        $json = json_decode($body);
-
-        if (false === ($json instanceof \stdClass)) {
-            throw new \RuntimeException("Could not decode response.");
-        }
-        if ($json->version !== $this->apiVersion) {
-            throw new \LogicException("HuffPo API evolved: {$json->version} (supported: {$this->apiVersion})");
-        }
-        if (0 !== $json->error->code) {
-            throw new \RuntimeException("An error occurred: {$json->error->message}.", $json->error->code);
-        }
-        return $json->response->{$this->getArticleId()};
     }
 }
