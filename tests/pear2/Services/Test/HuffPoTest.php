@@ -22,6 +22,7 @@ class HuffPoTest extends \PHPUnit_Framework_TestCase
     public function testArticleId($url, $id)
     {
         $huffPo = new HuffPo($url);
+        $this->assertSame($url, $huffPo->getUrl());
         $this->assertSame($id, $huffPo->getArticleId());
     }
 }
