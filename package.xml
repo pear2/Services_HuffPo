@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>PEAR2_Services_HuffPo</name>
+ <channel>easybib.github.com/pear</channel>
+ <summary>An API wrapper to retrieve meta data of articles on huffingtonpost.com.</summary>
+ <description>An API wrapper to retrieve meta data of articles on huffingtonpost.com.</description>
+ <lead>
+  <name>Till Klampaeckel</name>
+  <user>till</user>
+  <email>till@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-05-03</date>
+ <time>18:04:14</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>
+Initial release!
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <dir name="library">
+    <dir name="PEAR2">
+     <dir name="Services">
+      <dir name="HuffPo">
+       <file baseinstalldir="/" name="Request.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /library/PEAR2/Services/HuffPo -->
+      <file baseinstalldir="/" name="HuffPo.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /library/PEAR2/Services -->
+    </dir> <!-- /library/PEAR2 -->
+   </dir> <!-- /library -->
+   <dir name="tests">
+    <dir name="PEAR2">
+     <dir name="Services">
+      <dir name="Test">
+       <file baseinstalldir="/" name="HuffPoOnlineTest.php" role="test" />
+       <file baseinstalldir="/" name="HuffPoTest.php" role="test" />
+      </dir> <!-- /tests/PEAR2/Services/Test -->
+     </dir> <!-- /tests/PEAR2/Services -->
+    </dir> <!-- /tests/PEAR2 -->
+    <file baseinstalldir="/" name="TestInit.php" role="test" />
+   </dir> <!-- /tests -->
+   <file baseinstalldir="/" name="README.md" role="doc" />
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.9.4</min>
+   </pearinstaller>
+   <package>
+    <name>HTTP_Request2</name>
+    <channel>pear.php.net</channel>
+   </package>
+   <extension>
+    <name>spl</name>
+   </extension>
+  </required>
+ </dependencies>
+ <phprelease>
+  <filelist>
+   <install as="PEAR2/Services/HuffPo/Request.php" name="library/PEAR2/Services/HuffPo/Request.php" />
+   <install as="PEAR2/Services/HuffPo.php" name="library/PEAR2/Services/HuffPo.php" />
+  </filelist>
+ </phprelease>
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-05-03</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+Initial release!
+   </notes>
+  </release>
+ </changelog>
+</package>
