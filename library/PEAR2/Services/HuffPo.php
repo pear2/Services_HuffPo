@@ -46,22 +46,40 @@ class HuffPo
     protected $endpoint = 'http://www.huffingtonpost.com/api/';
 
     /**
+     * Partner tag for API requests.
+     * @var string
+     */
+    protected $partner;
+
+    /**
      * An aritcle's URL.
      * @var string
      */
     protected $url;
 
+    /**
+     * Let's go!
+     *
+     * @param string $url
+     *
+     * @return $this
+     */
     public function __construct($url)
     {
         $this->url = $url;
     }
 
     /**
+     * Build the request URL.
+     *
      * @return string
      */
     public function getApiRequestUrl()
     {
         $request = sprintf('%s?t=entry&entry_ids=%d', $this->endpoint, $this->getArticleId());
+        if (null !== $this->partner) {
+            $request .= '&partner=' . urlencode($this->partner);
+        }
         return $request;
     }
 
@@ -143,6 +161,23 @@ class HuffPo
 
         $response = $request->makeRequest();
         return $request->parseResponse($response);
+    }
+
+    /**
+     * Set partner tag.
+     *
+     * @param string $partner
+     *
+     * @return HuffPo
+     * @throws \InvalidArgumentException
+     */
+    public function setPartner($partner)
+    {
+        if (empty($partner)) {
+            throw new \InvalidArgumentException("Partner tag cannot be empty.");
+        }
+        $this->partner = $partner;
+        return $this;
     }
 
     public function getUrl()

@@ -44,4 +44,11 @@ class HuffPoTest extends \PHPUnit_Framework_TestCase
         $this->assertStringStartsWith($endpoint, $requestUrl);
         $this->assertStringEndsWith((string) $id, $requestUrl);
     }
+
+    public function testPartner()
+    {
+        $huffPo     = new HuffPo('http://www.huffingtonpost.com/randy-fox/cleveland-ohio-and-its-accordion-king_b_1465943.html');
+        $requestUrl = $huffPo->setPartner('testsuite')->getApiRequestUrl();
+        $this->assertStringEndsWith('&partner=testsuite', $requestUrl);
+    }
 }
