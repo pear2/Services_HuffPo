@@ -105,6 +105,13 @@ class HuffPo
         return $this->endpoint;
     }
 
+    /**
+     * Return meta data of the article!
+     *
+     * @param mixed $url
+     *
+     * @return \stdClass
+     */
     public function getMetaData($url = null)
     {
         if (null !== $url) {
@@ -113,7 +120,7 @@ class HuffPo
         }
         $request  = $this->getApiRequestUrl();
         $response = $this->makeRequest($request);
-        $this->parseResponse($response);
+        return $this->parseResponse($response);
     }
 
     public function getUrl()
@@ -144,12 +151,27 @@ class HuffPo
     /**
      * Parse the response!
      *
+     * @param \HTTP_Request2_Response $response
+     *
+     * @return \stdClass
+     *
+     * @throws \RuntimeException|\LogicException
+     * @todo   Fix all these assumptions about the response!
      */
     protected function parseResponse(\HTTP_Request2_Response $response)
     {
         $body = $response->getBody();
         $json = json_decode($body);
 
-        var_dump($json);
+        if (false === ($json instanceof \stdClass)) {
+            throw new \RuntimeException("Could not decode response.");
+        }
+        if ($json->version !== $this->apiVersion) {
+            throw new \LogicException("HuffPo API evolved: {$json->version} (supported: {$this->apiVersion})");
+        }
+        if (0 !== $json->error->code) {
+            throw new \RuntimeException("An error occurred: {$json->error->message}.", $json->error->code);
+        }
+        return $json->response->{$this->getArticleId()};
     }
 }
