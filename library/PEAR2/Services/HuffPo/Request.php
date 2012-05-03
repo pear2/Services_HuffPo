@@ -1,6 +1,28 @@
 <?php
+/**
+ * Copyright 2012, Till Klampaeckel
+ *
+ * PHP Version 5.3
+ *
+ * @category Services
+ * @package  PEAR2\Services\HuffPo
+ * @author   Till Klampaeckel <till@php.net>
+ * @license  http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @version  Release: @package_version@
+ * @link     https://github.com/pear2/Services_HuffPo
+ */
 namespace PEAR2\Services\HuffPo;
 
+/**
+ * PEAR2\Services\HuffPo
+ *
+ * @category Services
+ * @package  PEAR2\Services\HuffPo
+ * @author   Till Klampaeckel <till@php.net>
+ * @license  http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @version  Release: @package_version@
+ * @link     https://github.com/pear2/Services_HuffPo
+ */
 class Request
 {
     /**
