@@ -1,7 +1,7 @@
 <?php
-namespace pear2\Services\Test;
+namespace PEAR2\Services\Test;
 
-use pear2\Services\HuffPo;
+use PEAR2\Services\HuffPo;
 
 class HuffPoTest extends \PHPUnit_Framework_TestCase
 {

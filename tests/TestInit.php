@@ -5,4 +5,4 @@ if (false === $status) {
     exit(1);
 }
 
-require_once dirname(__DIR__) . '/library/pear2/Services/HuffPo.php';
+require_once dirname(__DIR__) . '/library/PEAR2/Services/HuffPo.php';
