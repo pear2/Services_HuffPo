@@ -1,0 +1,17 @@
+{
+    "name": "pear2/services_huffpo",
+    "description": "Service wrapper for retrieving data about articles on huffpo.com.",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "till",
+            "email": "till@php.net"
+        }
+    ],
+    "autoload": {
+        "classmap": ["./library"]
+    },
+    "require": {
+
+    }
+}

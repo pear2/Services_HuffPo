@@ -1,2 +1,5 @@
 .idea
 *.tgz
+
+/vendor/
+composer.phar
